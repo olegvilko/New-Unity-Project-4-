@@ -8,7 +8,6 @@ using UnityEngine.SceneManagement;
 
 public static class SaveLoad
 {
-  //  [SerializeField]
     private static string filename= "stream";
 
     public static void Save()

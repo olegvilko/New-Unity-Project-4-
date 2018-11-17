@@ -14,8 +14,6 @@ public class Factory : MonoBehaviour
 
     private float timer = 0;
 
- //   int t = 0;
-
     void Update()
     {
         timer += Time.deltaTime;

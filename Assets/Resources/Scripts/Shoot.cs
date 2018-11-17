@@ -5,17 +5,11 @@ using UnityEngine;
 
 public class Shoot : MonoBehaviour
 {
-    //[SerializeField]
-    //protected float distance = 5.0F;
-
-
    [SerializeField]
     protected Vector2 impulse;
 
- //  [SerializeField]
     public float interval = 1.0F;
 
- //   [SerializeField]
     public float timeDestroy = 3.0f;
 
     [SerializeField]
@@ -27,7 +21,6 @@ public class Shoot : MonoBehaviour
     [SerializeField]
     protected Bullet bullet;
 
-   // [SerializeField]
     public Vector2 scale = new Vector2(1,1);
 
     [SerializeField]
@@ -43,14 +36,12 @@ public class Shoot : MonoBehaviour
         {
             bullet = Resources.Load<Bullet>("Prefabs/items/Bullet");
         }
-        //bullet = LinksManager.bullet;
         unit = GetComponent<Unit>();
     }
 
     protected virtual void Start()
     {
         triggerShoot = true;
-      //  InvokeRepeating("Shooting", interval, interval);
     }
 
     protected virtual void Update()
@@ -60,8 +51,6 @@ public class Shoot : MonoBehaviour
             triggerShoot = false;
             StartCoroutine(AttackCoroutine());
         }
-        //  Shooting();
-        // Thread.Sleep(interval);
     }
 
     IEnumerator AttackCoroutine()

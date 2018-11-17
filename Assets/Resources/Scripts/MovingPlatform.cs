@@ -14,7 +14,7 @@ public class MovingPlatform : TypeObject
     private Vector2 centre;
 
     private Vector3 direction;
-    // Use this for initialization
+
     void Start()
     {
         direction = radius;
@@ -22,7 +22,6 @@ public class MovingPlatform : TypeObject
         centre.y = transform.position.y;
     }
 
-    //// Update is called once per frame
     void Update()
     {
         Move();
@@ -39,20 +38,12 @@ public class MovingPlatform : TypeObject
 
     private void Move()
     {
-        transform.position = Vector3.MoveTowards(transform.position, transform.position+direction, speed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, transform.position + direction, speed * Time.deltaTime);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-    //    Debug.Log(collision.transform.parent.gameObject);
-        //if (collision.transform.parent.gameObject.tag!=null)
-        //{
-        //    collision.transform.parent.gameObject.transform.parent = gameObject.transform;
-        //}
-        //else
-        //{
-            collision.transform.parent = transform;
-        //}
+        collision.transform.parent = transform;
     }
 
     private void OnCollisionExit2D(Collision2D collision)

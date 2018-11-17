@@ -6,8 +6,6 @@ public class MonsterLivesBar : MonoBehaviour
 {
     private float length = 0.3F;
 
-   // private GameObject monsterLivesBarFull;
-
     public void Refresh(int lives, int livesMax)
     {
         float sectors = 1.0F / livesMax;

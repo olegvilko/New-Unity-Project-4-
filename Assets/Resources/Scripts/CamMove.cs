@@ -8,12 +8,6 @@ public class CamMove : MonoBehaviour {
     float posY = 1;
     [SerializeField]
     float posZ = -10.0F;
-
-  //  private GameObject player;
-
-	void Start () {
-    //    player = GameObject.FindGameObjectWithTag("Player");
-    }
 	
 	void Update () {
         transform.position = new Vector3(LinksManager.player.transform.position.x, LinksManager.player.transform.position.y+posY,posZ);

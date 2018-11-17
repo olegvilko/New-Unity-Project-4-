@@ -16,42 +16,14 @@ public class Unit : TypeObject
 
     public float speed = 1.0F;
 
- //   [SerializeField]
-  //  public float scale = 1.0F;
-
     private GameObject heart;
 
-  //  protected Type type;
     private MonsterLivesBar monsterLivesBar;
-    //protected GameObject player;
-
-    //  protected virtual void Awake()
-    //  {
-    ////      player = GameObject.FindGameObjectWithTag("Player");
-    //  //    type = this.GetComponent<Type>();
-    //      //   Debug.Log("123");
-
-    //  }
 
     protected virtual void Awake()
     {
-        // player = GameObject.FindGameObjectWithTag("Player");
-        // type = GetComponent<Type>();
         livesMax = lives;
-     //  transform.localScale = new Vector3(transform.localScale.x * scale, transform.localScale.y * scale, transform.localScale.z);
     }
-
-    private void Start()
-    {
-      //  transform.localScale = new Vector3(10, transform.localScale.y * scale, transform.localScale.z);
-        //type = this.GetComponent<Type>();
-        //Debug.Log("123");
-    }
-    //public void Awake()
-    //{
-    //    heart = Resources.Load("Heart") as GameObject;
-    //    Debug.Log("Utit");
-    //}
 
     public enum Enemy
     {
@@ -61,9 +33,6 @@ public class Unit : TypeObject
 
     public virtual void ReceiveDamage()
     {
-        // Тут надо переделать
-        //   type = this.GetComponent<Type>();
-
         monsterLivesBar = FindObjectOfType<MonsterLivesBar>();
 
 
@@ -88,6 +57,5 @@ public class Unit : TypeObject
         newSplash.transform.position = gameObject.transform.position;
 
         Destroy(parent);
-//        Destroy(gameObject);
     }
 }

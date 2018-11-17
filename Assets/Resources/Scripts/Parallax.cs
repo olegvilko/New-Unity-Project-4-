@@ -14,15 +14,8 @@ public class Parallax : MonoBehaviour {
     {
         transform.position = player.transform.position;
     }
-
-    // Use this for initialization
-    void Start () {
-		
-	}
 	
-	// Update is called once per frame
 	void Update () {
-        //this.transform.position=
         transform.position = transform.position + Vector3.right*speed;
 
         float diff = transform.position.x - player.transform.position.x;

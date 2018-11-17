@@ -10,12 +10,4 @@ public class TypeObject : MonoBehaviour {
         building
     }
     public Obj obj;
-
-   
-        
-        
-
-        
-
-
 }

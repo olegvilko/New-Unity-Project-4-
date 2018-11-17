@@ -1,26 +1,18 @@
 ﻿using UnityEngine;
 using UnityEngine.UI; 
 
-using System.Collections;
-
 public class BackgroundHelper : MonoBehaviour
 {
 
     public float speed = 0; 
 
-   // public GameObject player;
-
     float pos = 0;
 
     public RawImage image; 
 
- //   public float playerSpeed;
-
     public float height = 3;
 
     Vector3 startPos;
-
-
 
     void Update()
     {
@@ -33,7 +25,4 @@ public class BackgroundHelper : MonoBehaviour
         image.uvRect = new Rect(pos, 0, 1, 1);
 
     }
-
-
-
 }

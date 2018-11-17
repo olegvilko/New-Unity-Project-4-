@@ -9,16 +9,9 @@ public class RollBack : MonoBehaviour
 
     public float timeCounter = 10f;
 
-    // private float timer = 0;
-
     private float scale;
 
     private float step;
-
-    //void Start()
-    //{
-
-    //}
 
     public void RollbackStart(float time)
     {
@@ -29,11 +22,6 @@ public class RollBack : MonoBehaviour
 
     void NewScale()
     {
-
-        //        Debug.Log(scale);
-
-
-
         scale = scale - timeCounter;
         if (scale <= 0)
         {
@@ -42,7 +30,6 @@ public class RollBack : MonoBehaviour
             CancelInvoke();
         }
         transform.localScale = new Vector3(1, scale, 1);
-
     }
 
 

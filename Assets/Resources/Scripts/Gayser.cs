@@ -11,6 +11,5 @@ public class Gayser : MonoBehaviour
     {
         Rigidbody2D rigidbody = collision.GetComponent<Rigidbody2D>();
         rigidbody.AddForce(transform.up * impulse, ForceMode2D.Impulse);
-        //rigidbody.AddForce(transform.up * 3.0F, ForceMode2D.Impulse);
     }
 }

@@ -7,13 +7,6 @@ public class NextLevel : MonoBehaviour {
 
     public string nextLevel;
 
-    //public void MySwitchScenes(string MyScene2Load)
-    //{
-
-    //    SceneManager.LoadScene(nextLevel);
-
-    //}
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
