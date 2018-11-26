@@ -5,7 +5,7 @@ using UnityEngine;
 public class Unit : TypeObject
 {
     [SerializeField]
-    private GameObject parent;
+    protected GameObject parent;
 
     public Enemy enemy;
 

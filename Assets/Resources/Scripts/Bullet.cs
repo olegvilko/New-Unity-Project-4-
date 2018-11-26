@@ -4,14 +4,18 @@ using UnityEngine;
 
 public class Bullet : Unit
 {
-    private GameObject parent;
-    public GameObject Parent { set { parent = value; } }
+    //    private GameObject parent;
+    //    public GameObject Parent { set { parent = value; } }
+
+    public float blastRadius=0.0f;
 
     public float timeDestroy = 0.1F;
 
     public Vector2 scale;
 
     public float scaleAdd;
+
+    //   public int explosionMaxParticles=10;
 
     private float direction;
 
@@ -22,13 +26,16 @@ public class Bullet : Unit
 
     private SpriteRenderer sprite;
 
-    private GameObject explosion;
+    public GameObject explosion;
+
 
     protected override void Awake()
     {
         base.Awake();
         sprite = GetComponentInChildren<SpriteRenderer>();
-        explosion = LinksManager.explosion;
+
+        if (explosion == null)
+            explosion = LinksManager.explosion1;
 
     }
 
@@ -59,27 +66,37 @@ public class Bullet : Unit
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        TypeObject typeObject = collision.GetComponent<TypeObject>();
-
-        if (typeObject && typeObject.obj == Obj.terrain)
+        if (blastRadius == 0)
         {
-            Destroy(gameObject);
+
+            TypeObject typeObject = collision.GetComponent<TypeObject>();
+
+            if (typeObject && typeObject.obj == Obj.terrain)
+            {
+                Destroy(gameObject);
+            }
+            else
+            {
+                Unit unit = collision.GetComponent<Unit>();
+
+                //  if (unit && unit.gameObject != parent && unit.enemy != enemy)
+                if (unit && unit.gameObject && unit.enemy != enemy)
+                {
+                    unit.ReceiveDamage();
+                    Destroy(gameObject);
+                }
+            }
         }
         else
         {
-
-            Unit unit = collision.GetComponent<Unit>();
-
-            if (unit && unit.gameObject != parent && unit.enemy != enemy)
-            {
-                unit.ReceiveDamage();
-                Destroy(gameObject);
-            }
+            CircleCollider2D circleCollider2D = GetComponent<CircleCollider2D>();
+            circleCollider2D.radius = blastRadius;
+            blastRadius = 0;
         }
     }
 
     private void OnDestroy()
     {
-        Instantiate(explosion, transform.position, transform.rotation);
+        GameObject newExplosion = Instantiate(explosion, transform.position, transform.rotation);
     }
 }

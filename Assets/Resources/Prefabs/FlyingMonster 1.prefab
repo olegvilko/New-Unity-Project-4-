@@ -168,6 +168,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d583be491bb20144977b2cf8429defb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  distance: 0
+  removalRate: 8
 --- !u!114 &114790087192161480
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -197,6 +199,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cf737350444d7542a5a9622392a6af9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explosion: {fileID: 0}
   impulse: {x: 3, y: 0}
   interval: 1
   timeDestroy: 3

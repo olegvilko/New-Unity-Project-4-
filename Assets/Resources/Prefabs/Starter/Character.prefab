@@ -273,6 +273,7 @@ MonoBehaviour:
   rollBack1: {fileID: 0}
   rollBack2: {fileID: 0}
   rollBack3: {fileID: 0}
+  forceReceiveDamage: 2
   jump: 5
   speedMount: 0.03
   rawImage: {fileID: 0}

@@ -18,6 +18,7 @@ public class ShootableMonster : Monster {
 
     protected override void Update()
     {
+      //  RotationToPlayer();
          Rotation();   
     }
 
@@ -25,8 +26,8 @@ public class ShootableMonster : Monster {
     {
         if (transform.position.x - LinksManager.player.transform.position.x < 0)
         {
-            if(transform.localScale.x>0)
-            transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y);
+            if (transform.localScale.x > 0)
+                transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y);
         }
         else
         {

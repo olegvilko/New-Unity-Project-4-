@@ -11,7 +11,7 @@ public class MovingPlatform : TypeObject
     [SerializeField]
     private float speed = 1.0f;
 
-    private Vector2 centre;
+    public Vector2 centre;
 
     private Vector3 direction;
 
@@ -25,14 +25,24 @@ public class MovingPlatform : TypeObject
     void Update()
     {
         Move();
+
         if (Mathf.Abs(transform.position.x - centre.x) > radius.x)
         {
             direction.x = -direction.x;
         }
 
-        if (Mathf.Abs(transform.position.y - centre.y) > radius.y)
+        //  if (Mathf.Abs(transform.position.y - centre.y) > radius.y)
+        if (transform.position.y - centre.y > radius.y)
         {
+            //        Debug.Log(transform.position.y - centre.y);
             direction.y = -direction.y;
+            // radius.y = Ьфер radius.y;
+        }
+        else if(transform.position.y - centre.y < -radius.y)
+        {
+            direction.y = Mathf.Abs(direction.y);
+            
+           // radius.y = -radius.y;
         }
     }
 

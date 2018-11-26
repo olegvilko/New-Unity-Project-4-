@@ -27,6 +27,7 @@ public class Menu : MonoBehaviour
             {
                 Time.timeScale = 0;
                 menu.SetActive(true);
+                BackToMenu();
             }
         }
     }
@@ -69,6 +70,7 @@ public class Menu : MonoBehaviour
 
     public void ExitGame()
     {
+        SaveLoad.SaveIni();
         Application.Quit();
     }
 }

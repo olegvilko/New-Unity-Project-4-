@@ -183,7 +183,7 @@ MonoBehaviour:
   enemy: 1
   lives: 2
   livesMax: 0
-  speed: 2
+  speed: 1
 --- !u!114 &114899005753183380
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -195,6 +195,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d583be491bb20144977b2cf8429defb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  distance: 0
+  removalRate: 8
 --- !u!212 &212189914145185440
 SpriteRenderer:
   m_ObjectHideFlags: 1

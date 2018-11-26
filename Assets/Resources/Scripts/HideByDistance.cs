@@ -1,12 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class HideByDistance : MonoBehaviour
 {
+    public float distance = 0.0f;
+
+    [SerializeField]
+    private int removalRate = 8;
+
     private Transform child;
 
-    private float timeCounter = 0.0f;
     private float timer = 0;
 
     void Start()
@@ -16,27 +18,29 @@ public class HideByDistance : MonoBehaviour
 
     void Update()
     {
-        timer += Time.deltaTime;
-        if (timer >= timeCounter)
-        {
-            timer = 0;
-            CheckDistance();
-        }
+        CheckDistance();
     }
 
     private void CheckDistance()
     {
         var heading = transform.position - LinksManager.player.transform.position;
-        var distance = heading.magnitude;
+        distance = heading.magnitude;
         if (distance < LinksManager.hideDistance)
         {
             child.gameObject.SetActive(true);
         }
         else
         {
-            child.gameObject.SetActive(false);
+            for (var i = LinksManager.poolDistance.Length-1; i >= 0; i--)
+            {
+                if (distance >LinksManager.hideDistance+ LinksManager.poolStep * i)
+                {
+                    gameObject.transform.parent = LinksManager.poolDistance[i].transform;
+                    gameObject.SetActive(false);
+                    break;
+                }
+                child.gameObject.SetActive(false);
+            }
         }
-
-        timeCounter = distance/8;
     }
 }

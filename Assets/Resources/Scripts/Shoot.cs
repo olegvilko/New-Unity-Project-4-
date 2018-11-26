@@ -1,11 +1,14 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
-using System.Threading;
 using UnityEngine;
 
 public class Shoot : MonoBehaviour
 {
-   [SerializeField]
+    public float blastRadius=0.0f;
+
+    //[HideInInspector]
+    //public GameObject explosion;
+
+    [SerializeField]
     protected Vector2 impulse;
 
     public float interval = 1.0F;
@@ -21,14 +24,16 @@ public class Shoot : MonoBehaviour
     [SerializeField]
     protected Bullet bullet;
 
-    public Vector2 scale = new Vector2(1,1);
+    public Vector2 scale = new Vector2(1, 1);
 
     [SerializeField]
     protected float scaleAdd = 0;
 
-   private Unit unit;
+    private Unit unit;
 
-    private bool triggerShoot=true;
+    private bool triggerShoot = true;
+
+    protected Bullet newBullet;
 
     void Awake()
     {
@@ -37,11 +42,14 @@ public class Shoot : MonoBehaviour
             bullet = Resources.Load<Bullet>("Prefabs/items/Bullet");
         }
         unit = GetComponent<Unit>();
+
+
     }
 
     protected virtual void Start()
     {
         triggerShoot = true;
+        //    explosion = LinksManager.explosion1;
     }
 
     protected virtual void Update()
@@ -70,20 +78,26 @@ public class Shoot : MonoBehaviour
     {
         int direction = SetDirection();
         Vector3 position = transform.position;
-        position.x += translation.x*direction;
+        position.x += translation.x * direction;
         position.y += translation.y;
 
-        Bullet newBullet = Instantiate(bullet, position, transform.rotation);
-        newBullet.Parent = gameObject;
+        newBullet = Instantiate(bullet, position, transform.rotation);
+        //      newBullet.Parent = gameObject;
         newBullet.color = bulletColor;
         newBullet.timeDestroy = timeDestroy;
         newBullet.enemy = unit.enemy;
         newBullet.scaleAdd = scaleAdd;
-        newBullet.scale = scale*direction;
+        newBullet.scale = scale * direction;
 
         Rigidbody2D rb;
         rb = newBullet.GetComponent<Rigidbody2D>();
-        impulse.x =Mathf.Abs(impulse.x)*direction;
+        impulse.x = Mathf.Abs(impulse.x) * direction;
+
+        //     newBullet.explosionMaxParticles = 10009;
+        //if (explosion == null)
+        //    explosion = LinksManager.explosion1;
+        //newBullet.explosion = explosion;
+
         rb.AddForce(impulse, ForceMode2D.Impulse);
     }
 

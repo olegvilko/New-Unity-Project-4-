@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Factory : MonoBehaviour
 {
-    public int test=0;
+   // public int test=0;
 
     [SerializeField]
     private GameObject gameobject;
@@ -13,6 +13,13 @@ public class Factory : MonoBehaviour
     private float timeCounter = 6f;
 
     private float timer = 0;
+
+    public FPSDisplay fPSDisplay;
+
+    private void Start()
+    {
+      //  fPSDisplay = GetComponent<FPSDisplay>();
+    }
 
     void Update()
     {
@@ -26,9 +33,12 @@ public class Factory : MonoBehaviour
 
     private void newObject()
     {
-        Debug.Log(test);
-        test++;
-
-        GameObject newObj = Instantiate(gameobject, transform.position, transform.rotation);
+        //     Debug.Log(test);
+        //     test++;
+       // for (var i = 0; i < 10; i++)
+        {
+            fPSDisplay.monsters++;
+            GameObject newObj = Instantiate(gameobject, transform.position, transform.rotation);
+        }
     }
 }

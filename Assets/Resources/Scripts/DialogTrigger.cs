@@ -5,21 +5,25 @@ using UnityEngine.UI;
 
 public class DialogTrigger : MonoBehaviour
 {
-    public GameObject dialog;
-    public Text textComponent;
+    // public GameObject dialog;
+   // public Image dialog;
+   // public Text textComponent;
     Text newText;
 
     void Awake()
     {
         newText = GetComponent<Text>();
+       // textComponent=
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
         {
-            textComponent.text = newText.text;
-            dialog.SetActive(true);
+            // textComponent.text = newText.text;
+            LinksManager.dialogPanel.SetActive(true);
+            LinksManager.dialogText.text = newText.text;
+
         }
     }
 
@@ -27,7 +31,7 @@ public class DialogTrigger : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            dialog.SetActive(false);
+            LinksManager.dialogPanel.SetActive(false);
         }
     }
 }

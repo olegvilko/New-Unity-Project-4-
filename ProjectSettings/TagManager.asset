@@ -9,6 +9,8 @@ TagManager:
   - nextLevel
   - shield
   - bullet2
+  - dialog
+  - test
   layers:
   - Default
   - TransparentFX

@@ -7,7 +7,8 @@ public class PlayerController : Unit
     public RollBack rollBack2;
     public RollBack rollBack3;
 
-
+    [SerializeField]
+    private float forceReceiveDamage = 1.0f;
 
     private ShootPlayer1 shootPlayer1;
     private ShootPlayer2 shootPlayer2;
@@ -39,7 +40,7 @@ public class PlayerController : Unit
     private SpriteRenderer sprite;
     new private Rigidbody2D rigidbody;
 
-    private Bullet bullet;
+   // private Bullet bullet;
 
     float pos = 0;
 
@@ -59,7 +60,7 @@ public class PlayerController : Unit
         livesBar = FindObjectOfType<LivesBar>();
         sprite = GetComponentInChildren<SpriteRenderer>();
         rigidbody = GetComponent<Rigidbody2D>();
-        bullet = Resources.Load<Bullet>("Prefabs/items/BulletPlayer2");
+     //   bullet = Resources.Load<Bullet>("Prefabs/items/BulletPlayer2");
 
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
@@ -228,16 +229,16 @@ public class PlayerController : Unit
 
     public override void ReceiveDamage()
     {
-        Lives--;
+        //Lives--;
 
-        if (Lives <= 0)
-        {
-            Lives = 7;
-            transform.position = respawnPos;
-        }
+        //if (Lives <= 0)
+        //{
+        //    Lives = 7;
+        //    transform.position = respawnPos;
+        //}
     
-        rigidbody.velocity = Vector3.zero;
-        rigidbody.AddForce(transform.up * 3.0F, ForceMode2D.Impulse);
+        //rigidbody.velocity = Vector3.zero;
+        //rigidbody.AddForce(transform.up * forceReceiveDamage, ForceMode2D.Impulse);
 
     }
 }
